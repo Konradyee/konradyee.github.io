@@ -1,15 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>My Portfolio</title>
+  <meta charset="UTF-8">
+  <title>Your Name | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;text-align:center;padding-top:40px}
-    h1{color:#111}
+    :root{
+      --bg:#ffffff;
+      --card:#f9f9f9;
+      --text:#111111;
+      --muted:#555555;
+      --accent:#0066ff;
+      --border:#e6e6e6;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:920px;margin:0 auto;padding:3rem 1.5rem}
+
+    /* ---- Hero Card ---- */
+    .hero{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:3.5rem 2.5rem;
+      text-align:center;
+      margin-bottom:4rem;
+    }
+    .hero h1{font-size:2.5rem;font-weight:700;margin-bottom:.5rem}
+    .hero p{font-size:1.125rem;color:var(--muted)}
+    .hero .links{
+      display:flex;justify-content:center;gap:1.2rem;
+      margin-top:1.5rem;
+    }
+    .links img{width:22px;height:22px;filter:invert(0.5) sepia(1) saturate(5) hue-rotate(200deg)}
+
+    /* ---- Sections ---- */
+    h2{font-size:1.5rem;margin-bottom:1rem;font-weight:700}
+    section{margin-bottom:3.5rem}
+
+    /* ---- Projects Grid ---- */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:1.5rem;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:8px;
+      padding:1.75rem;
+      transition:transform .15s,box-shadow .15s;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+    }
+    .card h3{font-size:1.125rem;margin-bottom:.5rem}
+    .card p{color:var(--muted);font-size:.95rem}
+
+    /* ---- Résumé List ---- */
+    .timeline li{
+      list-style:none;
+      border-left:2px solid var(--border);
+      padding:0 0 1.5rem 1.5rem;
+      position:relative;
+    }
+    .timeline li::before{
+      content:'';
+      width:10px;height:10px;
+      background:var(--accent);
+      border-radius:50%;
+      position:absolute;left:-6px;top:6px;
+    }
+    .timeline .date{display:block;color:var(--muted);font-size:.875rem;margin-bottom:.25rem}
+    .timeline h4{font-size:1rem;font-weight:600}
+    .timeline p{font-size:.95rem;color:var(--muted)}
+
+    /* ---- Footer ---- */
+    footer{text-align:center;padding:2.5rem 1rem;font-size:.8125rem;color:var(--muted)}
   </style>
 </head>
 <body>
-  <h1>Hello, I’m &lt;Your Name&gt;!</h1>
-  <p>This site is hosted on GitHub Pages for free.</p>
+  <div class="container">
+    <!-- Hero Card -->
+    <div class="hero">
+      <h1>Your Name</h1>
+      <p>Full-stack developer &amp; product tinkerer</p>
+      <div class="links">
+        <a href="https://github.com/you" target="_blank" aria-label="GitHub">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/github.svg" alt="GitHub">
+        </a>
+        <a href="https://linkedin.com/in/you" target="_blank" aria-label="LinkedIn">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/linkedin.svg" alt="LinkedIn">
+        </a>
+        <a href="mailto:you@example.com" aria-label="Email">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/protonmail.svg" alt="Mail">
+        </a>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>SkyCart</h3>
+          <p>Real-time collaborative shopping list. Next.js + Firebase, hosted on Vercel.</p>
+        </div>
+        <div class="card">
+          <h3>WeatherDash</h3>
+          <p>Hyper-local 7-day PWA that works offline. Vanilla JS, OpenWeather API.</p>
+        </div>
+        <div class="card">
+          <h3>dotfiles</h3>
+          <p>One-command macOS/Linux dev setup. Ansible-driven, CI tested.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Résumé -->
+    <section id="resume">
+      <h2>Résumé</h2>
+      <ul class="timeline">
+        <li>
+          <span class="date">2023 – Present</span>
+          <h4>Frontend Engineer @ Acme Corp</h4>
+          <p>Shipped React micro-frontends serving 2 M monthly users; cut bundle size 38 %.</p>
+        </li>
+        <li>
+          <span class="date">2020 – 2023</span>
+          <h4>Software Developer @ BetaStart</h4>
+          <p>Built REST & GraphQL APIs in Node/Go; led migration to k8s, reducing infra cost 25 %.</p>
+        </li>
+        <li>
+          <span class="date">2019</span>
+          <h4>B.S. Computer Science – University of XYZ</h4>
+          <p>Graduated magna cum laude; president of the WebDev club.</p>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 Your Name • built with HTML & CSS on GitHub Pages
+  </footer>
 </body>
 </html>
