@@ -1,159 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Your Name | Portfolio</title>
+  <meta charset="utf-8">
+  <title>Konrad Yee | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio of Konrad Yee – Civil Engineer">
+  
+  <!--  Google Fonts (Forty uses Raleway + Open Sans)  -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!--  Font-Awesome for icons  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    :root{
-      --bg:#ffffff;
-      --card:#f9f9f9;
-      --text:#111111;
-      --muted:#555555;
-      --accent:#0066ff;
-      --border:#e6e6e6;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    .btn{
-  display:inline-block;
-  background:var(--accent);
-  color:#fff;
-  padding:.6rem 1.2rem;
-  border-radius:6px;
-  font-weight:500;
-  transition:background .2s;
-}
-    .btn:hover{background:#0052d9}
+  /*--------------------------------------------------------------*/
+  /*  BEIGE / EARTH PALETTE  –  human-centred, easy on the eyes   */
+  /*--------------------------------------------------------------*/
+  :root{
+    --bg:           #fdf9f3;  /* warm beige        */
+    --bg-dark:      #f5f0e8;  /* slight contrast   */
+    --heading:      #3c3c3c;  /* near-black        */
+    --text:         #5a534e;  /* soft charcoal     */
+    --accent:       #4a9b9b;  /* muted teal        */
+    --accent-dark:  #3d8282;  /* hover teal        */
+    --light-border: #e0d9cf;  /* subtle divide     */
+    --shadow:       rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Open Sans',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+  }
+  h1,h2,h3,h4,h5,h6{font-family:Raleway,sans-serif;font-weight:700;color:var(--heading)}
+  a{color:var(--accent);transition:color .2s}
+  a:hover{color:var(--accent-dark)}
+  img{max-width:100%;height:auto;display:block}
 
-    
-    body{
-      font-family:'Inter',system-ui,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:var(--accent);text-decoration:none}
-    .container{max-width:920px;margin:0 auto;padding:3rem 1.5rem}
+  /*--------------------------------------------------------------*/
+  /*  LAYOUT HELPERS                                              */
+  /*--------------------------------------------------------------*/
+  .wrapper{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+  .flexify{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
 
-    /* ---- Hero Card ---- */
-    .hero{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:3.5rem 2.5rem;
-      text-align:center;
-      margin-bottom:4rem;
-    }
-    .hero h1{font-size:2.5rem;font-weight:700;margin-bottom:.5rem}
-    .hero p{font-size:1.125rem;color:var(--muted)}
-    .hero .links{
-      display:flex;justify-content:center;gap:1.2rem;
-      margin-top:1.5rem;
-    }
-    .links img{width:22px;height:22px;filter:invert(0.5) sepia(1) saturate(5) hue-rotate(200deg)}
+  /*--------------------------------------------------------------*/
+  /*  BANNER  (Forty style)                                       */
+  /*--------------------------------------------------------------*/
+  .banner{
+    background:linear-gradient(115deg,var(--bg-dark) 0%,var(--bg) 100%);
+    padding:6rem 0 4rem;
+    text-align:center;
+    border-bottom:1px solid var(--light-border);
+  }
+  .banner h1{font-size:3rem;margin-bottom:.5rem}
+  .banner .tagline{font-size:1.25rem;color:var(--text);margin-bottom:2rem}
+  .banner .socials a{font-size:1.5rem;margin:0 .6rem}
 
-    /* ---- Sections ---- */
-    h2{font-size:1.5rem;margin-bottom:1rem;font-weight:700}
-    section{margin-bottom:3.5rem}
+  /*--------------------------------------------------------------*/
+  /*  SECTIONS                                                    */
+  /*--------------------------------------------------------------*/
+  section{padding:4rem 0}
+  .section-head{text-align:center;margin-bottom:3rem}
+  .section-head h2{font-size:2.25rem}
+  .section-head p{max-width:600px;margin:.5rem auto 0;color:var(--text)}
 
-    /* ---- Projects Grid ---- */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:1.5rem;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:8px;
-      padding:1.75rem;
-      transition:transform .15s,box-shadow .15s;
-    }
-    .card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
-    }
-    .card h3{font-size:1.125rem;margin-bottom:.5rem}
-    .card p{color:var(--muted);font-size:.95rem}
+  /*--------------------------------------------------------------*/
+  /*  PROJECT TILES  (duplicate block to add)                     */
+  /*--------------------------------------------------------------*/
+  .tiles{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:2rem;
+  }
+  .tile{
+    background:#fff;
+    border:1px solid var(--light-border);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 14px var(--shadow);
+    transition:transform .25s,box-shadow .25s;
+  }
+  .tile:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 28px var(--shadow);
+  }
+  .tile img{width:100%;height:200px;object-fit:cover}
+  .tile-content{padding:1.5rem}
+  .tile-content h3{margin-bottom:.5rem;font-size:1.3rem}
+  .tile-content p{color:var(--text);font-size:.95rem;margin-bottom:1rem}
+  .tile-content .button{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    padding:.55rem 1.2rem;
+    border-radius:4px;
+    font-weight:600;
+  }
+  .tile-content .button:hover{background:var(--accent-dark)}
 
-    /* ---- Résumé List ---- */
-    .timeline li{
-      list-style:none;
-      border-left:2px solid var(--border);
-      padding:0 0 1.5rem 1.5rem;
-      position:relative;
-    }
-    .timeline li::before{
-      content:'';
-      width:10px;height:10px;
-      background:var(--accent);
-      border-radius:50%;
-      position:absolute;left:-6px;top:6px;
-    }
-    .timeline .date{display:block;color:var(--muted);font-size:.875rem;margin-bottom:.25rem}
-    .timeline h4{font-size:1rem;font-weight:600}
-    .timeline p{font-size:.95rem;color:var(--muted)}
+  /*--------------------------------------------------------------*/
+  /*  RESUME  PAGE  (embedded + download)                         */
+  /*--------------------------------------------------------------*/
+  .resume-box{
+    background:#fff;
+    border:1px solid var(--light-border);
+    border-radius:10px;
+    padding:2rem;
+    margin-bottom:2rem;
+    box-shadow:0 4px 14px var(--shadow);
+  }
+  .resume-bar{
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem
+  }
+  iframe{
+    width:100%;
+    height:900px;                 /* tall reader window */
+    border:1px solid var(--light-border);
+    border-radius:6px;
+    background:var(--bg-dark);
+  }
 
-    /* ---- Footer ---- */
-    footer{text-align:center;padding:2.5rem 1rem;font-size:.8125rem;color:var(--muted)}
+  /*--------------------------------------------------------------*/
+  /*  FOOTER                                                      */
+  /*--------------------------------------------------------------*/
+  footer{
+    background:var(--bg-dark);
+    border-top:1px solid var(--light-border);
+    text-align:center;
+    padding:3rem 1rem;
+    font-size:.9rem;
+    color:var(--text);
+  }
+
+  /*--------------------------------------------------------------*/
+  /*  SMOOTH  SCROLL  (tiny UX bonus)                             */
+  /*--------------------------------------------------------------*/
+  html{scroll-behavior:smooth}
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <!-- Hero Card -->
-    <div class="hero">
-      <h1>Your Name</h1>
-      <p>Full-stack developer &amp; product tinkerer</p>
-      <div class="links">
-        <a href="https://github.com/you" target="_blank" aria-label="GitHub">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/github.svg" alt="GitHub">
-        </a>
-        <a href="https://linkedin.com/in/you" target="_blank" aria-label="LinkedIn">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/linkedin.svg" alt="LinkedIn">
-        </a>
-        <a href="mailto:you@example.com" aria-label="Email">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/protonmail.svg" alt="Mail">
-        </a>
+  <!-- ========================================================== -->
+  <!--  BANNER  –  name + tagline + social                        -->
+  <!-- ========================================================== -->
+  <header class="banner">
+    <div class="wrapper">
+      <!--  CONFIG:  your name + tagline  -->
+      <h1>Konrad Yee</h1>
+      <p class="tagline">Civil Engineer &amp; Aspiring Engineer</p>
+
+      <!--  CONFIG:  social links  -->
+      <div class="socials">
+        <a href="https://github.com/Konradyee" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="www.linkedin.com/in/konrad-yee-tor" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="konrad.yee@mail.utoronto.ca" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
+  </header>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>SkyCart</h3>
-          <p>Real-time collaborative shopping list. Next.js + Firebase, hosted on Vercel.</p>
-        </div>
-        <div class="card">
-          <h3>WeatherDash</h3>
-          <p>Hyper-local 7-day PWA that works offline. Vanilla JS, OpenWeather API.</p>
-        </div>
-        <div class="card">
-          <h3>dotfiles</h3>
-          <p>One-command macOS/Linux dev setup. Ansible-driven, CI tested.</p>
-        </div>
+  <!-- ========================================================== -->
+  <!--  PROJECTS  SECTION                                        -->
+  <!-- ========================================================== -->
+  <section id="projects">
+    <div class="wrapper">
+      <div class="section-head">
+        <h2>Selected Projects</h2>
+        <p>Things I’ve designed, built, and managed.</p>
       </div>
-    </section>
 
-    <!-- Résumé -->
-    <section id="resume">
-      <h2>Résumé</h2> 
-<!-- NEW: instant-upload button -->
-        <p style="margin-bottom:1.2rem">
-          <a href="resume.pdf" download class="btn">📄 Download Résumé (PDF)</a>
-        </p>
-<!-- ============================ -->
-        <ul class="timeline"> … </ul>
-    
+      <!--  TILES  –  duplicate this <div class="tile"> block for each new project  -->
+      <div class="tiles">
+
+        <!--  PROJECT TILE 1  -->
+        <div class="tile">
+          <!--  project thumbnail (replace src)  -->
+          <img src="https://source.unsplash.com/random/600x400?technology" alt="Project 1">
+          <div class="tile-content">
+            <h3>SkyCart</h3>
+            <p>Real-time collaborative shopping list. Next.js + Firebase, hosted on Vercel.</p>
+            <!--  link to live demo / case study  -->
+            <a href="https://github.com/YOU/SkyCart" class="button" target="_blank">View Project →</a>
+          </div>
+        </div>
+
+        <!--  PROJECT TILE 2  -->
+        <div class="tile">
+          <img src="https://source.unsplash.com/random/600x400?weather" alt="Project 2">
+          <div class="tile-content">
+            <h3>WeatherDash</h3>
+            <p>Hyper-local 7-day PWA that works offline. Vanilla JS, OpenWeather API.</p>
+            <a href="https://weatherdash.example.com" class="button" target="_blank">Live Demo →</a>
+          </div>
+        </div>
+
+        <!--  PROJECT TILE 3  -->
+        <div class="tile">
+          <img src="https://source.unsplash.com/random/600x400?code" alt="Project 3">
+          <div class="tile-content">
+            <h3>dotfiles</h3>
+            <p>One-command macOS/Linux dev environment. Ansible + CI tested.</p>
+            <a href="https://github.com/YOU/dotfiles" class="button" target="_blank">Explore →</a>
+          </div>
+        </div>
+
+        <!--  ★★★  ADD MORE TILES HERE  ★★★  -->
+        <!--  copy the block above, change img src, h3, p, and href  -->
+
+      </div><!-- /tiles -->
+    </div><!-- /wrapper -->
+  </section>
+
+  <!-- ========================================================== -->
+  <!--  RESUME  SECTION                                           -->
+  <!-- ========================================================== -->
+  <section id="resume">
+    <div class="wrapper">
+      <div class="section-head">
+        <h2>Résumé / CV</h2>
+        <p>Quick preview + PDF download.</p>
+      </div>
+
+      <div class="resume-box">
+        <div class="resume-bar">
+          <h3>Preview</h3>
+          <!--  CONFIG:  put your PDF filename here (upload to repo root)  -->
+          <a href="Konrad Yee Resume.pdf" download class="button">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+        </div>
+
+        <!--  Google Docs viewer:  always uses raw GitHub Pages URL  -->
+        <iframe
+          src="https://docs.google.com/gview?url=https://{{Konradyee}}.github.io/Konrad Yee Resume.pdf&embedded=true"
+          frameborder="0">
+        </iframe>
+      </div>
+
+      <!--  Optional:  classic text timeline still welcome  -->
+      <ul class="timeline">
+        <li>
+          <span class="date">2023 – Present</span>
+          <h4>Frontend Engineer @ Acme Corp</h4>
+          <p>Shipped React micro-frontends serving 2 M monthly users; cut bundle size 38 %.</p>
+        </li>
+        <li>
+          <span class="date">2020 – 2023</span>
+          <h4>Software Developer @ BetaStart</h4>
+          <p>Built REST & GraphQL APIs in Node/Go; led k8s migration, reducing infra cost 25 %.</p>
+        </li>
+        <li>
+          <span class="date">2019</span>
+          <h4>B.S. Computer Science – University of XYZ</h4>
+          <p>Graduated magna cum laude; president of the WebDev club.</p>
+        </li>
       </ul>
-    </section>
-  </div>
+    </div>
+  </section>
 
+  <!-- ========================================================== -->
+  <!--  FOOTER                                                    -->
+  <!-- ========================================================== -->
   <footer>
-    © 2025 Your Name • built with HTML & CSS on GitHub Pages
+    <div class="wrapper">
+      <p>© 2025 Konrad Yee • built with vanilla HTML/CSS on GitHub Pages</p>
+    </div>
   </footer>
 </body>
 </html>
